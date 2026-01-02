@@ -2,6 +2,9 @@
 
 This project is a personal portfolio website built with React to showcase my skills and projects as a full-stack software developer.
 
+## Preview
+[Preview link](https://quangnm5432.vercel.app)
+
 ## Tech Stack
 
 - **Frontend:** React, TypeScript, Vite, Tailwind CSS
