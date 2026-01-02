@@ -73,7 +73,7 @@ function ProjectSection() {
     };
 
     return (
-        <div className="p-4 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#1c1f26" }}>
+        <div className="p-4 px-6 md:p-6 " style={{ backgroundColor: "#1c1f26" }}>
             {/* Header */}
             <motion.div
                 className="text-center mb-12"

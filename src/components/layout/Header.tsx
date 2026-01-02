@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router"
 
 function Header() {
     const location = useLocation();
+    const [scrolled, setScrolled] = useState(false)
 
     const navs = [
         { path: "/", label: "Home" },
@@ -11,9 +13,29 @@ function Header() {
 
     const isActive = (path: string) => location.pathname === path;
 
+    // tracking header position
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 40)
+        }
+
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
+
     return (
-        <header className="sticky top-4 z-50 mx-auto px-4">
-            <div className="flex md:justify-between justify-center items-center px-8 py-2 md:py-3 bg-[#272A31] backdrop-blur-xl rounded-full shadow-lg">
+        <header className="sticky top-4 z-50 mx-auto px-4 flex justify-center">
+            <div className={`
+                    relative
+                    flex md:justify-between justify-center items-center
+                    px-8 py-2 md:py-3 rounded-full
+                    transition-all duration-500
+                    backdrop-blur-xl backdrop-saturate-150
+                    shadow-lg shadow-black/20
+                    ${scrolled
+                        ? "bg-white/10 border border-white/30 md:w-[80%]"
+                        : "bg-white/4 border border-white/10 w-full"}
+                `}  >
                 {/* Logo */}
                 <Link to="/" className="group flex items-center gap-3 hidden md:flex">
                     <div className="relative">
@@ -36,7 +58,7 @@ function Header() {
                         {navs.map((nav) => (
                             <Link to={nav.path} key={nav.path}>
                                 <li
-                                    className={`relative px-3 py-2 md:text-sm text-xs font-medium rounded-full transition-all duration-300
+                                    className={`relative px-3 py-2 md:text-sm text-xs font-medium rounded-full transition-all duration-200
                                         ${isActive(nav.path)
                                             ? "text-primary-foreground"
                                             : "text-muted-foreground hover:text-primary-foreground"

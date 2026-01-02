@@ -24,7 +24,7 @@ function HeroSection() {
 
     return (
         <motion.div
-            className="grid grid-cols-6 md:grid-cols-12 gap-4 pt-2 px-10 gap-y-8"
+            className="grid grid-cols-6 md:grid-cols-12 gap-4 pt-2 px-3 md:px-10 gap-y-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
