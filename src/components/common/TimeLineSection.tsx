@@ -17,6 +17,7 @@ const TimelineSection = () => {
             title: "On Job Training",
             location: "FPT Software, Ho Chi Minh City",
             position: " Intern Full-Stack Developer",
+            gpa: 3.75,
             description:
                 "Served as technical lead for a small development team, designing and implementing a full-stack web application. " +
                 "Developed RESTful APIs using Java Spring Boot and built a responsive user interface with React.js. " +
@@ -28,6 +29,7 @@ const TimelineSection = () => {
             title: "FPT University",
             location: "Ho Chi Minh City",
             position: "Bachelor of Software Engineering (Student)",
+            gpa: 3.4,
             description:
                 "Studying core software engineering principles, including data structures, algorithms, web application development, " +
                 "and database design. Actively building practical projects using modern technologies to strengthen full-stack development skills.",

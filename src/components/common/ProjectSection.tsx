@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ExternalLink, Github, Calendar, FolderOpen } from "lucide-react";
+import { Github, Calendar, FolderOpen, SquareArrowOutUpRight } from "lucide-react";
 import bdn from "@/assets/bdn.png"
 import iam from "@/assets/iam.png"
 import chat from "@/assets/chat.png"
@@ -14,16 +14,19 @@ function ProjectSection() {
                 "Implemented secure navigation, responsive layouts, and role-based user flows to support donation registration, event tracking, and information management.",
             techs: ["React", "TypeScript", "React Router", "Tailwind CSS"],
             time: "Jun 2025 – Aug 2025",
-            path: "https://github.com/QuangWorkIT/BloodDonationSupportSystem_FE",
+            git: "https://github.com/QuangWorkIT/BloodDonationSupportSystem_FE",
+            path: "https://blood-donation-support-system-fe.vercel.app/home",
             img: bdn
         },
         {
             title: "Identity and Access Management (IAM) Service",
             desc:
                 "Built a web-based Identity and Access Management system to centralize user authentication and authorization. " +
-                "Designed RESTful APIs and implemented JWT-based security to manage user roles, permissions, and secure access across multiple services.",
-            techs: ["React", "Java", "Spring Boot", "JWT", "PostgreSQL", "REST API"],
+                "Designed RESTful APIs and implemented JWT-based security to manage user roles, permissions, and secure access across multiple services. " +
+                "Deployment by EC2 service of AWS.",
+            techs: ["React", "Java", "Spring Boot", "JWT", "PostgreSQL", "REST API", "AWS", "Docker"],
             time: "Sep 2025 – Dec 2025",
+            git: "https://github.com/QuangWorkIT/lab-iam",
             path: "",
             img: iam
         },
@@ -34,7 +37,8 @@ function ProjectSection() {
                 "Implemented WebSocket-based communication with a Node.js backend to ensure low-latency, reliable message exchange.",
             techs: ["React", "TypeScript", "Node.js", "Express.js", "MongoDB", "WebSocket"],
             time: "Dec 2025 – Jan 2026",
-            path: "https://github.com/QuangWorkIT/chat-app-demo",
+            git: "https://github.com/QuangWorkIT/chat-app-demo",
+            path: "",
             img: chat
         },
     ];
@@ -171,35 +175,64 @@ function ProjectSection() {
                         </p>
 
                         {/* Action Button */}
-                        {project.path ? (
-                            <Link to={project.path} target="_blank" rel="noopener noreferrer">
+                        <div className="sm:flex-row flex flex-col gap-4">
+                            {project.git ? (
+                                <Link
+                                    to={project.git}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 "
+                                >
+                                    <motion.button
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="w-full h-full cursor-pointer flex items-center justify-center gap-2 p-2 rounded-lg font-medium transition-all duration-300"
+                                        style={{ backgroundColor: "#5eb3ba", color: "#1c1f26" }}
+                                    >
+                                        <Github className="w-4 h-4" />
+                                        Github review
+                                    </motion.button>
+                                </Link>
+                            ) : (
                                 <motion.button
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300"
-                                    style={{
-                                        backgroundColor: "#5eb3ba",
-                                        color: "#1c1f26",
-                                    }}
+                                    disabled
+                                    className="flex-1 w-full h-full flex items-center justify-center gap-2 p-2 rounded-lg font-medium cursor-not-allowed"
+                                    style={{ backgroundColor: "#33373f", color: "#738594" }}
                                 >
                                     <Github className="w-4 h-4" />
-                                    View on GitHub
-                                    <ExternalLink className="w-4 h-4" />
+                                    Coming Soon
                                 </motion.button>
-                            </Link>
-                        ) : (
-                            <motion.button
-                                disabled
-                                className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium cursor-not-allowed"
-                                style={{
-                                    backgroundColor: "#33373f",
-                                    color: "#738594",
-                                }}
-                            >
-                                <Github className="w-4 h-4" />
-                                Coming Soon
-                            </motion.button>
-                        )}
+                            )}
+
+                            {project.path ? (
+                                <Link
+                                    to={project.path}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1"
+                                >
+                                    <motion.button
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="w-full h-full cursor-pointer flex items-center justify-center gap-2  p-2 rounded-lg font-medium transition-all duration-300"
+                                        style={{ backgroundColor: "#F0F2F5", color: "#1c1f26" }}
+                                    >
+                                        <SquareArrowOutUpRight className="w-4 h-4" />
+                                        Live preview
+                                    </motion.button>
+                                </Link>
+                            ) : (
+                                <motion.button
+                                    disabled
+                                    className="flex-1 w-full h-full flex items-center justify-center gap-2  p-2 rounded-lg font-medium cursor-not-allowed"
+                                    style={{ backgroundColor: "#33373f", color: "#738594" }}
+                                >
+                                    <SquareArrowOutUpRight className="w-4 h-4" />
+                                    Coming Soon
+                                </motion.button>
+                            )}
+                        </div>
+
                     </motion.li>
                 ))}
             </motion.ul>

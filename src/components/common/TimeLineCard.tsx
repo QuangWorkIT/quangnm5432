@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Calendar, Briefcase } from "lucide-react";
+import { MapPin, Calendar, Briefcase, GraduationCap } from "lucide-react";
 
 interface TimelineCardProps {
     id: string,
@@ -9,9 +9,10 @@ interface TimelineCardProps {
     position: string;
     description: string;
     index: number;
+    gpa: number
 }
 
-const TimelineCard = ({ time, title, location, position, description, id, index }: TimelineCardProps) => {
+const TimelineCard = ({ time, title, location, position, description, id, index, gpa }: TimelineCardProps) => {
     return (
         <motion.li
             initial={{ opacity: 0, y: -10 }}
@@ -71,6 +72,10 @@ const TimelineCard = ({ time, title, location, position, description, id, index 
                     <div className="flex items-center gap-1.5">
                         <Briefcase className="w-4 h-4" style={{ color: "rgba(94, 179, 186, 0.7)" }} />
                         <span className="font-medium" style={{ color: "#5eb3ba" }}>{position}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                        <GraduationCap className="w-5 h-5" style={{ color: "rgba(94, 179, 186, 0.7)" }} />
+                        <span className="font-medium" style={{ color: "#738594" }}>GPA - {gpa}</span>
                     </div>
                 </div>
 
